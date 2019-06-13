@@ -3,6 +3,7 @@ class ShortLink < ApplicationRecord
   before_create :update_slug
   validates_presence_of :original_url
   validates_uniqueness_of :original_url
+  validates :original_url, format: URI::regexp(%w[http https])
 
   def to_param
     slug
