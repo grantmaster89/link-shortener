@@ -1,10 +1,15 @@
 class ShortLink < ApplicationRecord
+  # TODO: Only update slug once, as it is any update will change the slug
   before_save :update_slug
   validates_presence_of :original_url
   validates_uniqueness_of :original_url
 
   def to_param
     slug
+  end
+
+  def host
+    URI.parse(original_url).host
   end
 
   def increase_visit

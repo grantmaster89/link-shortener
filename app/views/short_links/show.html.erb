@@ -5,10 +5,11 @@
   <%= link_to @short_link.original_url, @short_link.original_url  %>
   <br>
   <h2>Url Slug:</h2>
-  <%= link_to @short_link.slug, @short_link.original_url %>
+  <%= link_to "#{@short_link.host}/s/#{@short_link.slug}", @short_link.original_url %>
   <br>
   <h2>Admin path:</h2>
-  <%= link_to @short_link.slug, @short_link.original_url %>
+  <%# Not really obfuscated ;), need to fix this!!! %>
+  <%= link_to "#{@short_link.host}/s/*****", admin_short_link_path %>
   <h2>Page Visits</h2>
   <%= @short_link.view_count %>
   
