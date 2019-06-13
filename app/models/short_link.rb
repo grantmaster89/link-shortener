@@ -1,5 +1,4 @@
 class ShortLink < ApplicationRecord
-  # TODO: Only update slug once, as it is any update will change the slug
   before_create :update_slug
   validates_presence_of :original_url
   validates_uniqueness_of :original_url
