@@ -7,14 +7,14 @@ class ShortLink < ApplicationRecord
     slug
   end
 
+  def increase_visit
+    self.view_count += 1
+  end
+
   private
 
   def update_slug
     self.slug = generate_short_url_slug
-  end
-
-  def increase_visit
-    self.view_count += 1
   end
 
   def generate_short_url_slug

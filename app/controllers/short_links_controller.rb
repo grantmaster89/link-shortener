@@ -24,6 +24,7 @@ class ShortLinksController < ApplicationController
 
   def show
     fetch_short_link
+    @short_link.increase_visit
   end
 
   def edit
