@@ -2,10 +2,15 @@
   <h1>This is the show page</h1>
   <br>
   <h2>Original Url:</h2>
-  <a href=><%= @short_link.original_url %></a>
+  <%= link_to @short_link.original_url, @short_link.original_url  %>
   <br>
   <h2>Url Slug:</h2>
-  <%= @short_link.slug %>
+  <%= link_to @short_link.slug, @short_link.original_url %>
+  <br>
+  <h2>Admin path:</h2>
+  <%= link_to @short_link.slug, @short_link.original_url %>
   <h2>Page Visits</h2>
   <%= @short_link.view_count %>
+  
 </div>
+<%= link_to 'Back to Index', short_links_path %>

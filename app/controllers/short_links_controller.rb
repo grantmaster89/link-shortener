@@ -31,6 +31,7 @@ class ShortLinksController < ApplicationController
   end
 
   def update
+    # TODO: change this to be funtional
     if @short_link.update whatdoes: :this_do
       redirect_to :somewhere
     else
