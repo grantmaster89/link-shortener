@@ -1,0 +1,6 @@
+{
+  "ruby.format": "rufo",
+  "files.associations": {
+    "*.erb": "erb"
+  }
+}
