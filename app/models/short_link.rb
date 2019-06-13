@@ -1,7 +1,7 @@
 class ShortLink < ApplicationRecord
   before_save :update_slug
   validates_presence_of :original_url
-  validates_uniqueness_of :original_ur
+  validates_uniqueness_of :original_url
 
   def to_param
     slug
@@ -11,6 +11,10 @@ class ShortLink < ApplicationRecord
 
   def update_slug
     self.slug = generate_short_url_slug
+  end
+
+  def increase_visit
+    self.view_count += 1
   end
 
   def generate_short_url_slug
