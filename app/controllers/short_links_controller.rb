@@ -24,6 +24,7 @@ class ShortLinksController < ApplicationController
 
   def show
     fetch_short_link
+    return render_not_found unless @short_link.active
     @short_link.increase_visit
   end
 
