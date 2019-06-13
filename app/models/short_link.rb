@@ -14,6 +14,7 @@ class ShortLink < ApplicationRecord
 
   def increase_visit
     self.view_count += 1
+    save!
   end
 
   private
