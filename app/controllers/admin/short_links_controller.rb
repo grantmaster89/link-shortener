@@ -9,6 +9,11 @@ class Admin::ShortLinksController < ApplicationController
     fetch_short_link
   end
 
+  def toggle_active_status
+    fetch_short_link
+    @short_link.toggle!(:active)
+  end
+
   private
 
   def fetch_short_link
