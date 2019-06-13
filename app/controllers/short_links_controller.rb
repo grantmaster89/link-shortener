@@ -2,6 +2,7 @@ class ShortLinksController < ApplicationController
   before_action :fetch_short_link, only: [:index, :show, :edit, :update]
 
   def index
+    @short_links = ShortLink.all
   end
 
   def new
@@ -9,13 +10,20 @@ class ShortLinksController < ApplicationController
   end
 
   def create
-    shortened_url = ShortLink.new
-    shortened_url.save
-
-    redirect_to :i_dont_know
+    @short_link = ShortLink.new(short_link_params)
+    respond_to do |format|
+      if @short_link.save
+        format.html { redirect_to @short_link, notice: "shortened_url was successfully created." }
+        format.json { render :show, status: :created, location: @short_link }
+      else
+        format.html { render :new }
+        format.json { render json: @short_link.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def show
+    fetch_short_link
   end
 
   def edit
@@ -32,6 +40,10 @@ class ShortLinksController < ApplicationController
   private
 
   def fetch_short_link
-    @short_link = ShortLink.find(params[:id])
+    @short_link = ShortLink.find_by_slug(params[:id])
+  end
+
+  def short_link_params
+    params.require(:short_link).permit(:original_url)
   end
 end
