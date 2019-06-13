@@ -1,6 +1,8 @@
+console.log(<%=@short_link.id %>)
 <% if @short_link.active == true %>
-    $(".short_link-<%= @short_link.id %> > a").html('Enabled').removeClass('btn-warning').addClass('btn-success')
+    console.log("DEBUG: true")
+    $("#short-link> a").html('Enabled').removeClass('btn-warning').addClass('btn-success')
 <% else %>
-    $(".short_link-<%= @short_link.id %> > a").html('Disabled').removeClass('btn-success').addClass('btn-warning')
+    $("#short-link > a").html('Disabled').removeClass('btn-success').addClass('btn-warning')
 <% end %>
-$("#short_link-status-<%= @short_link.id %>").html("<%= @short_link.active %>")
+$("#short-link-status").html("<%= @short_link.active %>")
