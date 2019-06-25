@@ -1,6 +1,11 @@
-<div>
-admin index page
-<% @short_links.each do |link| %>
-  <%= link.original_url %>
-<% end %>
+<div class='container'>
+  <h1>Admin Index</h1>
+  <ul class='list-group'>
+    <% @short_links.each do |item| %>
+      <li class='list-group-item'><%= link_to item.short_url, admin_short_link_path(item) %> , active: <%= item.active%> </li>
+    <% end %>
+  </ul>
+</div>
+<div style='padding-top: 2rem;'>
+  <%= link_to 'Back to Home', new_short_link_path , class: 'btn btn-primary' %>
 </div>

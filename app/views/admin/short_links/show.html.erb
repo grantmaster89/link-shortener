@@ -1,12 +1,19 @@
-<h1>Admin Show Page</h1>
-<h2>Original Url:</h2>
-<%= link_to @short_link.original_url, @short_link.original_url  %>
-<br>
-<h2>Page Visits</h2>
-<%= @short_link.view_count %>
-<p>
-  <strong>Active:</strong>
-  <span id='short-link-status'><%= @short_link.active %></span>
-  <br>
-  <span id='short-link'><%= link_to "#{ @short_link.active ? 'Enabled': 'Disabled'  }", toggle_active_status_admin_short_link_path(@short_link), method: :patch, remote: :true, class: "btn btn-xs btn-#{ @short_link.active ? 'success' : 'warning' }"  %></span>
+<h1>Admin Page</h1>
+<div class='card' style='width: 40rem;'>
+  <div class="card-body">
+    <h5 class="card-title">Original Url</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Page Visits: <%= @short_link.view_count %></h6>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <%=link_to 'Original', @short_link.original_url, target: "_blank", class: 'card-link' %>
+    <br>
+    <strong>Active:</strong>
+    <span id='short-link-status'><%= @short_link.active %></span>
+    <br>
+    <span id='short-link'><%= link_to "#{ @short_link.active ? 'Enabled': 'Disabled'  }", toggle_active_status_admin_short_link_path(@short_link), method: :patch, remote: :true, class: "btn btn-xs btn-#{ @short_link.active ? 'success' : 'warning' }"  %></span>
+  </div>
+</div>
+<%############## %>
 </p>
+<div style='padding-top: 2rem;'>
+  <%= link_to 'Back to Index', admin_short_links_path , class: 'btn btn-primary' %>
+</div>

@@ -3,17 +3,25 @@
     <h2>
       <%= pluralize(@short_link.errors.count, "error") %>
       prohibited this link from being saved:
-    </h2> 
-
+    </h2>
     <ul>
-    <% @short_link.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
+      <% @short_link.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
     </ul>
   </div>
 <% end %>
-<%= form_for @short_link, local: true do |f| %>
-  <%= f.text_field :original_url, placeholder: 'Paste a url' %>
-  <%= f.submit 'Shorten' %>
-<% end %>
+<div class= 'card'>
+  <div class='card-body'>
+    <%= form_for @short_link, local: true do |f| %>
+      <div class='form-group'>
+        <%= f.text_field :original_url, class: 'form-control', placeholder: 'Paste a url' %>
+        <%= f.submit 'Shorten' , class: "btn btn-primary"%>
+      </div>
+    <% end %>
+  </div>
+</div>
+</div>
+<div style='padding-top: 2rem;'>
+  <%= link_to 'Back to Home', short_links_path , class: 'btn btn-primary' %>
 </div>

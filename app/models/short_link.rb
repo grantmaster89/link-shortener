@@ -12,6 +12,16 @@ class ShortLink < ApplicationRecord
     URI.parse(original_url).host
   end
 
+  def admin_url
+    url = slug
+    host + "/s/" + url[0] + "****" + url[-1]
+  end
+
+  def short_url
+    url = slug
+    host + "/s/" + url
+  end
+
   def increase_visit
     self.view_count += 1
     save!
@@ -25,6 +35,6 @@ class ShortLink < ApplicationRecord
 
   def generate_short_url_slug
     # TODO: Think about adding 0-9
-    Array.new(6) { Array("a".."z").sample }.join
+    Array.new(6) { (Array("a".."z") + Array("A".."Z") + Array("0".."9")).sample }.join
   end
 end

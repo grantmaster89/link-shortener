@@ -1,8 +1,11 @@
-<h1>List of Links</h1>
-<div>
-  <ul>
+<div class='container'>
+  <h1>List of Links</h1>
+  <ul class='list-group'>
     <% @short_links.each do |item| %>
-      <li><%= link_to item.slug, item %> , <%= item.original_url%> </li>
+      <li class='list-group-item'><%= link_to item.short_url, item %> , <%= item.original_url%> </li>
     <% end %>
   </ul>
+</div>
+<div style='padding-top: 2rem;'>
+  <%= link_to 'Back to Home', new_short_link_path , class: 'btn btn-primary' %>
 </div>
