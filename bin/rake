@@ -1,10 +1,4 @@
 #!/usr/bin/env ruby
 require_relative "../config/boot"
 require "rake"
-
-begin
-  require "minitest/autorun"
-rescue LoadError => e
-  raise e unless ENV["RAILS_ENV"] == "production"
-end
 Rake.application.run
