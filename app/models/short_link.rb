@@ -13,13 +13,11 @@ class ShortLink < ApplicationRecord
   end
 
   def admin_url
-    url = slug
-    host + "/s/" + url[0] + "****" + url[-1]
+    host + "/s/" + slug[0] + "****" + slug[-1]
   end
 
   def short_url
-    url = slug
-    host + "/s/" + url
+    ENV["BASE_URL"] + "s/" + "#{slug}"
   end
 
   def increase_visit

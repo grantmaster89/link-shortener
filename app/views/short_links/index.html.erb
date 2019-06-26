@@ -2,7 +2,10 @@
   <h1>List of Links</h1>
   <ul class='list-group'>
     <% @short_links.each do |item| %>
-      <li class='list-group-item'><%= link_to item.short_url, item %> , <%= item.original_url%> </li>
+      <li class='list-group-item'>
+        <p>Shortened URL: <%= link_to item.short_url, item.short_url, target: "_blank" %></p>
+        <p>Original URL: <%= link_to item.original_url, item.original_url %> </p>
+      </li>
     <% end %>
   </ul>
 </div>

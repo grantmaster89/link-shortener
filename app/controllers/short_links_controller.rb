@@ -9,6 +9,17 @@ class ShortLinksController < ApplicationController
     @short_link = ShortLink.new
   end
 
+  def go
+    if params[:id]
+      @short_link = ShortLink.find_by(slug: params[:id])
+      if redirect_to @short_link.original_url
+        @short_link.increase_visit
+      end
+    else
+      @short_link = ShortLink.find(params[:id])
+    end
+  end
+
   def create
     @short_link = ShortLink.new(short_link_params)
     respond_to do |format|

@@ -2,9 +2,13 @@
   <h1>Show Page</h1>
   <div class='card' style='width: 40rem;'>
     <div class="card-body">
-      <h5 class="card-title">Original Url</h5>
+      <h5 class="card-title">Link</h5>
       <h6 class="card-subtitle mb-2 text-muted">Page Visits: <%= @short_link.view_count %></h6>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <p class="card-text">
+        Original: <%= @short_link.original_url%>
+        <br>
+        Short Link: <%= @short_link.short_url%>
+      </p>
       <%=link_to 'Original', @short_link.original_url, target: "_blank", class: 'card-link' %>
       <%=link_to 'Admin', admin_short_link_path, class: 'card-link' %>
     </div>
